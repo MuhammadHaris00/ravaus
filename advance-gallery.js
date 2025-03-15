@@ -13,6 +13,8 @@ const selected_image = document.querySelector(".selected-image");
 let selected_thumbnail = null;
 const zoom_canvas = document.querySelector("#selected-image-zoom-view");
 const zoom_highlight_area = document.querySelector(".zoom-highlight-area");
+const open_gallery_control_icon = "<svg data-v-dff6b1ce=\"\" aria-hidden=\"true\" focusable=\"false\" data-prefix=\"far\" data-icon=\"images\" role=\"presentation\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 576 512\" class=\"uik-icon svg-inline--fa fa-images fa-w-18\"><path fill=\"currentColor\" d=\"M480 416v16c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V176c0-26.51 21.49-48 48-48h16v48H54a6 6 0 0 0-6 6v244a6 6 0 0 0 6 6h372a6 6 0 0 0 6-6v-10h48zm42-336H150a6 6 0 0 0-6 6v244a6 6 0 0 0 6 6h372a6 6 0 0 0 6-6V86a6 6 0 0 0-6-6zm6-48c26.51 0 48 21.49 48 48v256c0 26.51-21.49 48-48 48H144c-26.51 0-48-21.49-48-48V80c0-26.51 21.49-48 48-48h384zM264 144c0 22.091-17.909 40-40 40s-40-17.909-40-40 17.909-40 40-40 40 17.909 40 40zm-72 96l39.515-39.515c4.686-4.686 12.284-4.686 16.971 0L288 240l103.515-103.515c4.686-4.686 12.284-4.686 16.971 0L480 208v80H192v-48z\" class=\"\"></path></svg>";
+const full_size_control_icon = "<svg data-v-2e6ce4ea=\"\" aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fas\" data-icon=\"external-link-alt\" role=\"presentation\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 512 512\" class=\"uik-icon svg-inline--fa fa-external-link-alt fa-w-16\" data-v-2a724615=\"\"><path fill=\"currentColor\" d=\"M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z\" class=\"\"></path></svg>";
 
 
 // Popup Variables
@@ -33,6 +35,7 @@ const full_view_button = document.querySelector(".full-size-control");
 const popup_prev_button = document.querySelector(".gallery-popup-prev-button");
 const popup_next_button = document.querySelector(".gallery-popup-next-button");
 const popup_zoom_canvas = document.querySelector(".gallery-popup-selected-image-canvas");
+const open_gallery_button = document.querySelector(".open-gallery-control");
 const popup_zoom_area = 250;
 const PopupZoomStates = {
     Disables:0,
@@ -51,11 +54,36 @@ window.addEventListener("DOMContentLoaded",  () => {
     if(gallery_image_paths.length > 0 && images_wrapper) {
         gallery_image_paths.forEach((image, idx) => {
             const thumbnail_image = document.createElement("img");
+            const full_view_control = document.createElement("i");
+            full_view_control.classList.add("full-size-control");
+            const open_gallery_control = document.createElement("i");
+            open_gallery_control.classList.add("open-gallery-control");
+            const thumbnail_wrapper = document.createElement("div");
+            thumbnail_wrapper.classList.add("thumbnail-wrapper");
+
+            full_view_control.addEventListener("click", function(e) {
+                window.open(thumbnail_image.src);
+            })
+
+
+
+            open_gallery_control.addEventListener("click", function(e) {
+                openPopup();
+            })
+
+            open_gallery_button.addEventListener("click", function(e) {
+                openPopup();
+            })
+
+            thumbnail_wrapper.append(full_view_control);
+            thumbnail_wrapper.append(open_gallery_control);
+            thumbnail_wrapper.append(thumbnail_image);
+            // images_wrapper.append(thumbnail_image);
             thumbnail_image.src = image;
             thumbnail_image.classList.add(thumbnail_image_classes);
             thumbnail_image.id = `thumbnail-image-${idx+1}`;
             thumbnail_image.setAttribute("data-index", idx+"");
-            images_wrapper.append(thumbnail_image);
+            images_wrapper.append(thumbnail_wrapper);
 
             // Popup
             const popup_thumbnail = thumbnail_image.cloneNode(true);
@@ -233,6 +261,14 @@ function closePopup(){
     if(gallery_popup){
         gallery_popup.classList.remove(popup_open_class);
         gallery_popup.classList.add(popup_close_class);
+    }
+}
+
+function openPopup(image_to_select){
+    if(gallery_popup){
+        gallery_popup.classList.remove(popup_close_class);
+        gallery_popup.classList.add(popup_open_class);
+        selectImage(image_to_select, popup_zoom_canvas);
     }
 }
 
