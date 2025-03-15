@@ -1,0 +1,292 @@
+.advance-custom-gallery-wrapper{
+  $thumbnail-size: 110px;
+  $selected-image-size: 368px;
+  $blue-color:#315e88;
+  $gallery-bg-color:#fafafa;
+  $zoom-highlight-color:#000;
+  $zoom-highlight-opacity:0.5;
+
+  //================================================
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 1em;
+  background-color: $gallery-bg-color;
+
+  .selected-image-wrapper{
+     position: relative;
+    .selected-image{
+      width: $selected-image-size;
+      height: $selected-image-size;
+
+      &:hover{
+          cursor: pointer;
+      }
+    }
+    #selected-image-zoom-view{
+      position: absolute;
+      top: 0;
+      left: 100%;
+      background-color: #a4f7f6;
+      width: $selected-image-size;
+      height: $selected-image-size;
+      display:none;
+
+    }
+
+    .zoom-highlight-area{
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: $zoom-highlight-color;
+      opacity: $zoom-highlight-opacity;
+      pointer-events: none;
+    }
+
+    &:has(.selected-image:hover){
+      #selected-image-zoom-view{
+        display: block;
+      }
+      .zoom-highlight-area{
+        display: block;
+        cursor: zoom-in;
+      }
+    }
+  }
+
+  .all-image-wrapper{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+
+
+    .image-thumbnail{
+      width: $thumbnail-size;
+      height: $thumbnail-size;
+      object-fit: contain;
+      background-color: white;
+      border:1px solid #fff;
+      border-radius: 0.25rem;
+      display: block;
+      &:hover,&.thumbnail-selected{
+        border-color: $blue-color;
+        cursor: pointer;
+      }
+
+    }
+  }
+}
+
+.advance-custom-gallery-popup-wrapper{
+  //Variables
+  $popup-bg-color:#fff;
+  $popup-overlay-color:#000;
+  $popup-overlay-opacity:0.5;
+  $font-family: Sans-serif;
+  $font-color: #1d252c;
+  $thumbnail-list-bg-color:#eef1f3;
+  $thumbnail-list-controls-size:24px;
+  $blue-color:#315e88;
+  $zoom-control-size:24px ;
+  $border-color:#ebebeb;
+  $canvas-zoom-area:300px;
+
+  height: 100%;
+
+  &.popup-close{
+    display: none;
+  }
+
+  //================
+
+
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+
+  .gallery-popup-overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $popup-overlay-color;
+    opacity: $popup-overlay-opacity;
+  }
+
+  .gallery-popup-content{
+    position: absolute;
+    top:50px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: min(1100px, 90vw);
+    max-height: min(1100px, 90vh);
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-color: $popup-bg-color;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    .gallery-popup-button-control{
+      position: fixed;
+      width: $thumbnail-list-controls-size;
+      height: $thumbnail-list-controls-size;
+      padding: 6px;
+      border: none;
+      outline: none;
+      background-color: white;
+      border-radius: 50%;
+      color: $blue-color;
+
+      &:hover{
+        cursor: pointer;
+      }
+
+      &.gallery-popup-prev-button{
+        top: 70px;
+      }
+      &.gallery-popup-next-button{
+        bottom: 15px;
+      }
+    }
+
+    .close-button{
+      right: 10px;
+      top: 10px;
+    }
+
+    .gallery-popup-top-bar{
+      min-height: 55px;
+      padding: 0 1em;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid $border-color;
+
+
+
+      .gallery-popup-title,
+      .gallery-popup-results{
+        font: 600 1em/1 $font-family;
+        color: $font-color;
+        padding-right: 1.6em;
+      }
+
+
+
+    }
+
+    .gallery-popup-canvas-content{
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+      position: relative;
+
+      .gallery-popup-thumbnail-list{
+        width: 128px;
+        height: 100%;
+        max-height: 100%;
+        box-sizing: border-box;
+        overflow-y: scroll;
+        overflow-x: auto;
+        position: relative;
+
+        background-color: $thumbnail-list-bg-color;
+        padding: 1.5em 1em 2em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap:0.7em;
+
+        .popup-thumbnail{
+          width: 100%;
+          max-width: 80px;
+          border-radius: 0.25em;
+          border:1px solid transparent;
+          border-bottom-width: 3px;
+
+          &:hover{
+            cursor: pointer;
+          }
+
+          &.thumbnail-selected{
+            border-color: $blue-color;
+          }
+        }
+
+        .gallery-popup-button-control{
+          box-shadow: 2px 2px 8px 0 rgba( 0,0,0,0.2);
+        }
+
+
+
+      }
+      .gallery-popup-zoom-controls{
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 0.5em;
+        border:1px solid #ebebeb;
+        border-radius: 0 0 4px 4px;
+        background-color: white;
+
+        .gallery-popup-zoom-control{
+          width: $zoom-control-size;
+          height: $zoom-control-size;
+          outline: none;
+          border:1px solid $blue-color;
+          //border-top-width: 0px;
+          background-color: white;
+          border-radius: 50%;
+          z-index: 5;
+
+          &:hover{
+            cursor: pointer;
+          }
+
+          .gallery-popup-control-icon{
+            color: $blue-color;
+          }
+        }
+      }
+
+      .gallery-popup-canvas-wrapper{
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        .gallery-popup-selected-image{
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+
+        .gallery-popup-selected-image-canvas{
+          display: block;
+          //width: $canvas-zoom-area;
+          height: $canvas-zoom-area;
+          aspect-ratio: 1/1;
+          position: absolute;
+          top: 0;
+          left: 0;
+          border: 1px solid $border-color;
+          border-radius: 50%;
+          pointer-events: none  ;
+        }
+      }
+    }
+
+  }
+
+}
