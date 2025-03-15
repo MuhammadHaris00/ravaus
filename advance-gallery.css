@@ -212,6 +212,8 @@
   height: 300px;
   aspect-ratio: 1/1;
   position: absolute;
+  background-repeat: no-repeat;
+  background-color: #040404;
   top: 0;
   left: 0;
   border: 1px solid #ebebeb;

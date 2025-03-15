@@ -98,18 +98,19 @@ window.addEventListener("DOMContentLoaded",  () => {
     if(popup_zoom_canvas && popup_selected_image){
         console.log("Hello", popup_selected_image);
         popup_selected_image.onmousemove = (e)=>{
-            createZoom(e,popup_selected_image,popup_zoom_canvas,popup_zoom_area, false, true);
+            createZoom(e,popup_selected_image,popup_zoom_canvas,popup_zoom_area, false, true,0.5);
         }
     }
 
 })
 
-function createZoom(event,source_image, canvas_element,zoom_area_size = 100, highlight_area = false,canvas_follows = false){
+function createZoom(event,source_image, canvas_element,zoom_area_size = 100, highlight_area = false,canvas_follows = false, scale_factor = 1){
 
     if(source_image && canvas_element && zoom_area_size > 0) {
-        const mouse_pos_x = event.pageX - source_image.offsetLeft - (zoom_area_size/2);
-        const mouse_pos_y = event.pageY - source_image.offsetTop - (zoom_area_size/2);
-        // console.log(pos_x, pos_y);
+        const rect = event.target.getBoundingClientRect();
+        const mouse_pos_x = event.clientX - rect.left - zoom_area_size / 2;
+        const mouse_pos_y = event.clientY - rect.top - zoom_area_size / 2;
+        // console.log(mouse_pos_x, mouse_pos_y);
 
 
 
@@ -140,18 +141,27 @@ function createZoom(event,source_image, canvas_element,zoom_area_size = 100, hig
         // ----------------------------------------------
 
         // Setting the Zoom Background Size
-        zoom_canvas.style.backgroundImage = `url(${source_image.src})`;
-        const zoom_canvas_image_size = source_image.width * (canvas_element.width / zoom_area_size);
-        zoom_canvas.style.backgroundSize = zoom_canvas_image_size + "px";
-        const bg_pos_x = zoom_canvas_image_size - (mouse_pos_x/source_image.width + zoom_area_size) * zoom_canvas_image_size;
-        const bg_pos_y = zoom_canvas_image_size - (mouse_pos_y/source_image.height + zoom_area_size)  * zoom_canvas_image_size;
+        canvas_element.style.backgroundImage = `url(${source_image.src})`;
+        const source_rect = source_image.getBoundingClientRect();
+        const canvas_rect = canvas_element.getBoundingClientRect();
+        // const zoom_canvas_image_size = source_rect.width * (canvas_rect.width / zoom_area_size);
+        const scale_ratio = source_rect.width/zoom_area_size;
+        const zoom_canvas_image_size = scale_ratio * source_rect.width;
+        canvas_element.style.backgroundSize = zoom_canvas_image_size*scale_factor + "px";
+        const bg_pos_x =-1*(mouse_pos_x * scale_ratio);
+        // Need to Know WHy 2.8 🤔
+        const bg_pos_y = -1*(mouse_pos_y * scale_ratio);
+        canvas_element.style.backgroundPositionX = `${bg_pos_x}px`;
+        canvas_element.style.backgroundPositionY = `${bg_pos_y}px`;
+        console.log(bg_pos_x, bg_pos_y, (mouse_pos_x/source_rect.width) * zoom_canvas_image_size,(mouse_pos_y/source_rect.height) * zoom_canvas_image_size);
+        // console.log(bg_pos_x,bg_pos_y);
+        // const bg_pos_x = zoom_canvas_image_size - (mouse_pos_x/source_image.width + zoom_area_size) * zoom_canvas_image_size;
+        // const bg_pos_y = zoom_canvas_image_size - (mouse_pos_y/source_image.height + zoom_area_size)  * zoom_canvas_image_size;
 
-        if(left_pos>0 && left_pos < source_image.width){
-            canvas_element.style.backgroundPositionX = `${bg_pos_x}px`;
-        }
-        if(top_pos>0 && top_pos < source_image.height){
-            canvas_element.style.backgroundPositionY = `${bg_pos_y}px`;
-        }
+        // if(left_pos>0 && left_pos < source_image.width){
+        // }
+        // if(top_pos>0 && top_pos < source_image.height){
+        // }
 
         // target_element.style.backgroundPosition = `${bg_pos_x}px ${bg_pos_y}px`;
         // console.log(bg_pos_x,bg_pos_y, zoom_canvas_image_size);
