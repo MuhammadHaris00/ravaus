@@ -1,10 +1,19 @@
+// const gallery_image_paths = [
+//     "./media/1.jpg",
+//     "./media/2.jpg",
+//     "./media/3.jpg",
+//     "./media/4.jpg",
+//     "./media/5.jpg",
+//     "./media/6.jpg",
+// ];
+
 const gallery_image_paths = [
-    "./media/1.jpg",
-    "./media/2.jpg",
-    "./media/3.jpg",
-    "./media/4.jpg",
-    "./media/5.jpg",
-    "./media/6.jpg",
+    "/wp-content/uploads/2025/03/1.jpg",
+    "/wp-content/uploads/2025/03/2.jpg",
+    "/wp-content/uploads/2025/03/3.jpg",
+    "/wp-content/uploads/2025/03/4.jpg",
+    "/wp-content/uploads/2025/03/5.jpg",
+    "/wp-content/uploads/2025/03/6.jpg",
 ];
 const thumbnail_image_classes = "image-thumbnail";
 const selected_thumbnail_classes = "thumbnail-selected";
@@ -189,6 +198,7 @@ function createZoom(event,source_image, canvas_element,zoom_area_size = 100,canv
         if(highlight_area){
             zoom_highlight_area.style.width = `${zoom_area_size}px`;
             zoom_highlight_area.style.height = `${zoom_area_size}px`;
+            zoom_highlight_area.style.display = "block";
             if(left_pos>0 && left_pos + zoom_area_size < source_image.width){
                 zoom_highlight_area.style.left = `${left_pos}px`;
             }

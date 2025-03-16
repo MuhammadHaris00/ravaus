@@ -6,79 +6,201 @@
     <link rel="stylesheet" href="./advance-gallery.css">
 </head>
 <body >
+<div class="custom-gallery">
 
-<div class="advance-custom-gallery-wrapper">
-    <div class="selected-image-wrapper">
-        <img class="selected-image" src="" alt="" id="selected-image">
-        <canvas id="selected-image-zoom-view"></canvas>
-        <div class="zoom-highlight-area"></div>
-        <i class="open-gallery-control">
-            <svg data-v-dff6b1ce="" aria-hidden="true" focusable="false" data-prefix="far" data-icon="images" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="uik-icon svg-inline--fa fa-images fa-w-18"><path fill="currentColor" d="M480 416v16c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V176c0-26.51 21.49-48 48-48h16v48H54a6 6 0 0 0-6 6v244a6 6 0 0 0 6 6h372a6 6 0 0 0 6-6v-10h48zm42-336H150a6 6 0 0 0-6 6v244a6 6 0 0 0 6 6h372a6 6 0 0 0 6-6V86a6 6 0 0 0-6-6zm6-48c26.51 0 48 21.49 48 48v256c0 26.51-21.49 48-48 48H144c-26.51 0-48-21.49-48-48V80c0-26.51 21.49-48 48-48h384zM264 144c0 22.091-17.909 40-40 40s-40-17.909-40-40 17.909-40 40-40 40 17.909 40 40zm-72 96l39.515-39.515c4.686-4.686 12.284-4.686 16.971 0L288 240l103.515-103.515c4.686-4.686 12.284-4.686 16.971 0L480 208v80H192v-48z" class=""></path></svg>
-        </i>
-    </div>
-    <div class="all-image-wrapper">
-
-    </div>
-</div>
-
-<div class="advance-custom-gallery-popup-wrapper popup-close">
-    <div class="gallery-popup-overlay"></div>
-    <div class="gallery-popup-content">
-        <button class="popup-close-button gallery-popup-button-control close-button">
-            <i class="gallery-popup-icon">
-                <svg data-v-05f584d0="" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" class="uik-icon svg-inline--fa fa-times fa-w-11"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" class=""></path></svg>
+    <div class="advance-custom-gallery-wrapper">
+        <div class="selected-image-wrapper">
+            <img class="selected-image" src="" alt="" id="selected-image">
+            <canvas id="selected-image-zoom-view"></canvas>
+            <div class="zoom-highlight-area"></div>
+            <i class="open-gallery-control">
+                <svg data-v-dff6b1ce="" aria-hidden="true" focusable="false" data-prefix="far" data-icon="images" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="uik-icon svg-inline--fa fa-images fa-w-18"><path fill="currentColor" d="M480 416v16c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V176c0-26.51 21.49-48 48-48h16v48H54a6 6 0 0 0-6 6v244a6 6 0 0 0 6 6h372a6 6 0 0 0 6-6v-10h48zm42-336H150a6 6 0 0 0-6 6v244a6 6 0 0 0 6 6h372a6 6 0 0 0 6-6V86a6 6 0 0 0-6-6zm6-48c26.51 0 48 21.49 48 48v256c0 26.51-21.49 48-48 48H144c-26.51 0-48-21.49-48-48V80c0-26.51 21.49-48 48-48h384zM264 144c0 22.091-17.909 40-40 40s-40-17.909-40-40 17.909-40 40-40 40 17.909 40 40zm-72 96l39.515-39.515c4.686-4.686 12.284-4.686 16.971 0L288 240l103.515-103.515c4.686-4.686 12.284-4.686 16.971 0L480 208v80H192v-48z" class=""></path></svg>
             </i>
-        </button>
-        <div class="gallery-popup-top-bar">
-            <div class="gallery-popup-title">
-                Representations of 202216151
-            </div>
-            <div class="gallery-popup-results">
-                Result 1 of 1
-            </div>
         </div>
-        <div class="gallery-popup-canvas-content">
-            <div class="gallery-popup-thumbnail-list">
-                <button class="gallery-popup-prev-button gallery-popup-button-control">
-                    <i class="gallery-popup-icon">
-                        <svg data-v-5a7bbef2="" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-up" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="uik-icon svg-inline--fa fa-chevron-up fa-w-14"><path fill="currentColor" d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z" class=""></path></svg>
-                    </i>
-                </button>
-                <button class="gallery-popup-next-button gallery-popup-button-control">
-                    <svg data-v-5a7bbef2="" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="uik-icon svg-inline--fa fa-chevron-down fa-w-14"><path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z" class=""></path></svg>
-                </button>
+        <div class="thumbnails-and-content">
+            <div class="all-image-wrapper">
+
             </div>
-            <div class="gallery-popup-canvas-wrapper">
-                <img src="" class="gallery-popup-selected-image">
-                <canvas class="gallery-popup-selected-image-canvas"></canvas>
-                <div class="gallery-popup-zoom-controls">
-                    <button class="gallery-popup-zoom-control rotate-left-control">
-                        <i class="gallery-popup-control-icon">
-                            <svg data-v-5a7bbef2="" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="undo" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="uik-icon svg-inline--fa fa-undo fa-w-16"><path fill="currentColor" d="M212.333 224.333H12c-6.627 0-12-5.373-12-12V12C0 5.373 5.373 0 12 0h48c6.627 0 12 5.373 12 12v78.112C117.773 39.279 184.26 7.47 258.175 8.007c136.906.994 246.448 111.623 246.157 248.532C504.041 393.258 393.12 504 256.333 504c-64.089 0-122.496-24.313-166.51-64.215-5.099-4.622-5.334-12.554-.467-17.42l33.967-33.967c4.474-4.474 11.662-4.717 16.401-.525C170.76 415.336 211.58 432 256.333 432c97.268 0 176-78.716 176-176 0-97.267-78.716-176-176-176-58.496 0-110.28 28.476-142.274 72.333h98.274c6.627 0 12 5.373 12 12v48c0 6.627-5.373 12-12 12z" class=""></path></svg>
-                        </i>
-                    </button>
-                    <button class="gallery-popup-zoom-control rotate-right-control">
-                        <i class="gallery-popup-control-icon">
-                            <svg data-v-5a7bbef2="" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="redo" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="uik-icon svg-inline--fa fa-redo fa-w-16"><path fill="currentColor" d="M500.33 0h-47.41a12 12 0 0 0-12 12.57l4 82.76A247.42 247.42 0 0 0 256 8C119.34 8 7.9 119.53 8 256.19 8.1 393.07 119.1 504 256 504a247.1 247.1 0 0 0 166.18-63.91 12 12 0 0 0 .48-17.43l-34-34a12 12 0 0 0-16.38-.55A176 176 0 1 1 402.1 157.8l-101.53-4.87a12 12 0 0 0-12.57 12v47.41a12 12 0 0 0 12 12h200.33a12 12 0 0 0 12-12V12a12 12 0 0 0-12-12z" class=""></path></svg>
-                        </i>
-                    </button>
-                    <button class="gallery-popup-zoom-control double-zoom-control">
-                        <i class="gallery-popup-control-icon">
-                            <svg data-v-5a7bbef2="" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search-plus" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="uik-icon svg-inline--fa fa-search-plus fa-w-16"><path fill="currentColor" d="M304 192v32c0 6.6-5.4 12-12 12h-56v56c0 6.6-5.4 12-12 12h-32c-6.6 0-12-5.4-12-12v-56h-56c-6.6 0-12-5.4-12-12v-32c0-6.6 5.4-12 12-12h56v-56c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v56h56c6.6 0 12 5.4 12 12zm201 284.7L476.7 505c-9.4 9.4-24.6 9.4-33.9 0L343 405.3c-4.5-4.5-7-10.6-7-17V372c-35.3 27.6-79.7 44-128 44C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208c0 48.3-16.4 92.7-44 128h16.3c6.4 0 12.5 2.5 17 7l99.7 99.7c9.3 9.4 9.3 24.6 0 34zM344 208c0-75.2-60.8-136-136-136S72 132.8 72 208s60.8 136 136 136 136-60.8 136-136z" class=""></path></svg>
-                        </i>
-                    </button>
-                    <button class="gallery-popup-zoom-control full-size-control">
-                        <i class="gallery-popup-control-icon">
-                            <svg data-v-5a7bbef2="" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="external-link-alt" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="uik-icon svg-inline--fa fa-external-link-alt fa-w-16"><path fill="currentColor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z" class=""></path></svg>
-                        </i>
-                    </button>
+            <div class="content-area">
+                <div class="content-heading">Statement of newness and distinctiveness</div>
+                <div class="content-body content-description fix-height-description">
+                    <div class="content-description-wrapper">
+                        <p>
+                            Newness and distinctiveness reside in the visual features of a wall mount as shown in the accompanying representations. In particular, the location and configuration of the contact points, and the configuration of the slide-on connector irrespective of the shape of the connector.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="advance-custom-gallery-popup-wrapper popup-close">
+        <div class="gallery-popup-overlay"></div>
+        <div class="gallery-popup-content">
+            <button class="popup-close-button gallery-popup-button-control close-button">
+                <i class="gallery-popup-icon">
+                    <svg data-v-05f584d0="" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="times" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" class="uik-icon svg-inline--fa fa-times fa-w-11"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" class=""></path></svg>
+                </i>
+            </button>
+            <div class="gallery-popup-top-bar">
+                <div class="gallery-popup-title">
+                    Representations of 202216151
+                </div>
+                <div class="gallery-popup-results">
+                    Result 1 of 1
+                </div>
+            </div>
+            <div class="gallery-popup-canvas-content">
+                <div class="gallery-popup-thumbnail-list">
+                    <button class="gallery-popup-prev-button gallery-popup-button-control">
+                        <i class="gallery-popup-icon">
+                            <svg data-v-5a7bbef2="" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-up" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="uik-icon svg-inline--fa fa-chevron-up fa-w-14"><path fill="currentColor" d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z" class=""></path></svg>
+                        </i>
+                    </button>
+                    <button class="gallery-popup-next-button gallery-popup-button-control">
+                        <svg data-v-5a7bbef2="" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="uik-icon svg-inline--fa fa-chevron-down fa-w-14"><path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z" class=""></path></svg>
+                    </button>
+                </div>
+                <div class="gallery-popup-canvas-wrapper">
+                    <img src="" class="gallery-popup-selected-image">
+                    <canvas class="gallery-popup-selected-image-canvas"></canvas>
+                    <div class="gallery-popup-zoom-controls">
+                        <button class="gallery-popup-zoom-control rotate-left-control">
+                            <i class="gallery-popup-control-icon">
+                                <svg data-v-5a7bbef2="" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="undo" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="uik-icon svg-inline--fa fa-undo fa-w-16"><path fill="currentColor" d="M212.333 224.333H12c-6.627 0-12-5.373-12-12V12C0 5.373 5.373 0 12 0h48c6.627 0 12 5.373 12 12v78.112C117.773 39.279 184.26 7.47 258.175 8.007c136.906.994 246.448 111.623 246.157 248.532C504.041 393.258 393.12 504 256.333 504c-64.089 0-122.496-24.313-166.51-64.215-5.099-4.622-5.334-12.554-.467-17.42l33.967-33.967c4.474-4.474 11.662-4.717 16.401-.525C170.76 415.336 211.58 432 256.333 432c97.268 0 176-78.716 176-176 0-97.267-78.716-176-176-176-58.496 0-110.28 28.476-142.274 72.333h98.274c6.627 0 12 5.373 12 12v48c0 6.627-5.373 12-12 12z" class=""></path></svg>
+                            </i>
+                        </button>
+                        <button class="gallery-popup-zoom-control rotate-right-control">
+                            <i class="gallery-popup-control-icon">
+                                <svg data-v-5a7bbef2="" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="redo" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="uik-icon svg-inline--fa fa-redo fa-w-16"><path fill="currentColor" d="M500.33 0h-47.41a12 12 0 0 0-12 12.57l4 82.76A247.42 247.42 0 0 0 256 8C119.34 8 7.9 119.53 8 256.19 8.1 393.07 119.1 504 256 504a247.1 247.1 0 0 0 166.18-63.91 12 12 0 0 0 .48-17.43l-34-34a12 12 0 0 0-16.38-.55A176 176 0 1 1 402.1 157.8l-101.53-4.87a12 12 0 0 0-12.57 12v47.41a12 12 0 0 0 12 12h200.33a12 12 0 0 0 12-12V12a12 12 0 0 0-12-12z" class=""></path></svg>
+                            </i>
+                        </button>
+                        <button class="gallery-popup-zoom-control double-zoom-control">
+                            <i class="gallery-popup-control-icon">
+                                <svg data-v-5a7bbef2="" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search-plus" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="uik-icon svg-inline--fa fa-search-plus fa-w-16"><path fill="currentColor" d="M304 192v32c0 6.6-5.4 12-12 12h-56v56c0 6.6-5.4 12-12 12h-32c-6.6 0-12-5.4-12-12v-56h-56c-6.6 0-12-5.4-12-12v-32c0-6.6 5.4-12 12-12h56v-56c0-6.6 5.4-12 12-12h32c6.6 0 12 5.4 12 12v56h56c6.6 0 12 5.4 12 12zm201 284.7L476.7 505c-9.4 9.4-24.6 9.4-33.9 0L343 405.3c-4.5-4.5-7-10.6-7-17V372c-35.3 27.6-79.7 44-128 44C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208c0 48.3-16.4 92.7-44 128h16.3c6.4 0 12.5 2.5 17 7l99.7 99.7c9.3 9.4 9.3 24.6 0 34zM344 208c0-75.2-60.8-136-136-136S72 132.8 72 208s60.8 136 136 136 136-60.8 136-136z" class=""></path></svg>
+                            </i>
+                        </button>
+                        <button class="gallery-popup-zoom-control full-size-control">
+                            <i class="gallery-popup-control-icon">
+                                <svg data-v-5a7bbef2="" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="external-link-alt" role="presentation" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="uik-icon svg-inline--fa fa-external-link-alt fa-w-16"><path fill="currentColor" d="M432,320H400a16,16,0,0,0-16,16V448H64V128H208a16,16,0,0,0,16-16V80a16,16,0,0,0-16-16H48A48,48,0,0,0,0,112V464a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V336A16,16,0,0,0,432,320ZM488,0h-128c-21.37,0-32.05,25.91-17,41l35.73,35.73L135,320.37a24,24,0,0,0,0,34L157.67,377a24,24,0,0,0,34,0L435.28,133.32,471,169c15,15,41,4.5,41-17V24A24,24,0,0,0,488,0Z" class=""></path></svg>
+                            </i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-sections">
+        <div class="content-section">
+            <div class="content-area">
+                <div class="content-heading">Summary</div>
+                <div class="content-body content-table">
+                    <table>
+                        <tr>
+                            <th>Product name</th>
+                            <td>Wall Mount</td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td><span class="dot green-dot"></span>Certified</td>
+                        </tr>
+                        <tr>
+                            <th>Priority date
+                            </th>
+                            <td>19 Oct 2022
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Classification</th>
+                            <td title="Statuary, figurines, heads, busts and ornaments of human form including gnomes.">11-02D</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="content-area">
+                <div class="content-heading">Ownership</div>
+                <div class="content-body content-table">
+                    <table>
+                        <tr>
+                            <th>Current owner</th>
+                            <td>ICON WORLDWIDE PTY LTD
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="content-area">
+                <div class="content-heading">Designer</div>
+                <div class="content-body content-table">
+                    <table>
+                        <tr>
+                            <td>Mathew ZORE
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="content-section">
+            <div class="content-area">
+                <div class="content-heading">Dates</div>
+                <div class="content-body content-table">
+                    <table>
+                        <tr>
+                            <th>Max registration period end
+                            </th>
+                            <th>19 Oct 2032
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Currently registered until
+                            </th>
+                            <th>
+                                19 Oct 2027</th>
+                        </tr>
+                        <tr>
+                            <th>Certified
+                            </th>
+                            <td>16 May 2023
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Registered
+                            </th>
+                            <td>19 Dec 2022
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="content-area">
+                <div class="content-heading">Address for service
+                </div>
+                <div class="content-body content-table">
+                    <table>
+                        <tr>
+                            <th>Baxter Patent Attorneys Pty Ltd
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                Level 21
+                                207 Kent St<br>
+                                Sydney, NSW, 2000<br>
+                                australia<br>
+                                ABN: 26163635283
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
 </div>
-
-
 </body>
 <script src="./advance-gallery.js"></script>
 </html>
