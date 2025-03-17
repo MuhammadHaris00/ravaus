@@ -77,7 +77,7 @@ window.addEventListener("DOMContentLoaded",  () => {
 
 
             open_gallery_control.addEventListener("click", function(e) {
-                openPopup();
+                openPopup(thumbnail_image);
             })
 
             open_gallery_button.addEventListener("click", function(e) {
@@ -145,17 +145,59 @@ window.addEventListener("DOMContentLoaded",  () => {
     })
 
     popup_prev_button?.addEventListener("click", () => {
-        const prevSibling = selected_thumbnail.previousElementSibling;
-        if (prevSibling && prevSibling.classList.contains("image-thumbnail")) {
-            selectImage(prevSibling, popup_selected_image);
+        // Get selected thumbnail
+        const selectedThumbnail = gallery_popup.querySelector(`.${selected_thumbnail_classes}`);
+        if (!selectedThumbnail) {
+            console.error("No selected thumbnail found.");
+        } else {
+            const currentIndex = Number(selectedThumbnail.getAttribute("data-index"));
+            console.log("Current data-index:", currentIndex);
+
+            // Correct formula for wrapping previous index
+            const prevIndex = (currentIndex - 1 + gallery_image_paths.length) % gallery_image_paths.length;
+            console.log("Calculated prevIndex:", prevIndex);
+
+            // Select the previous sibling
+            const prevSibling = gallery_popup.querySelector(`img[data-index="${prevIndex}"]`);
+            console.log("Found prevSibling:", prevSibling);
+
+            // If found, select it
+            if (prevSibling) {
+                selectImage(prevSibling, popup_selected_image);
+            } else {
+                console.error("No previous sibling found for index:", prevIndex);
+            }
         }
+
     });
     popup_next_button?.addEventListener("click", () => {
-        const nextSibling = selected_thumbnail.nextElementSibling;
-        if (nextSibling && nextSibling.classList.contains("image-thumbnail")) {
+        // Get selected image
+        const selectedThumbnail = gallery_popup.querySelector(`.${selected_thumbnail_classes}`);
+        if (!selectedThumbnail) {
+            console.error("No selected thumbnail found.");
+            return;
+        }
+
+        // Get current index
+        const currentIndex = Number(selectedThumbnail.getAttribute("data-index"));
+        console.log("Current data-index:", currentIndex);
+
+        // Correct formula for next index wrapping
+        const nextIndex = (currentIndex + 1) % gallery_image_paths.length;
+        console.log("Calculated nextIndex:", nextIndex);
+
+        // Select the next sibling using data-index
+        const nextSibling = gallery_popup.querySelector(`img[data-index="${nextIndex}"]`);
+        console.log("Found nextSibling:", nextSibling);
+
+        // If found, select it
+        if (nextSibling) {
             selectImage(nextSibling, popup_selected_image);
+        } else {
+            console.error("No next sibling found for index:", nextIndex);
         }
     });
+
 
 
     if(popup_zoom_canvas && popup_selected_image){
@@ -259,7 +301,8 @@ function selectImage(new_image, canvas_element){
         selected_thumbnail = new_image;
         selected_thumbnail.classList.add(selected_thumbnail_classes);
         canvas_element.src = new_image.src;
-        console.log(canvas_element.src, new_image.src);
+        // selected_image = selected_thumbnail;
+        // console.log(selected_thumbnail.classList);
     }
     else{
         console.log(new_image, canvas_element);
@@ -278,7 +321,9 @@ function openPopup(image_to_select){
     if(gallery_popup){
         gallery_popup.classList.remove(popup_close_class);
         gallery_popup.classList.add(popup_open_class);
-        selectImage(image_to_select, popup_zoom_canvas);
+        const popup_image_to_select = gallery_popup.querySelector(`img[data-index="${image_to_select.getAttribute('data-index')}"]`);
+        // popup_selected_image = popup_image_to_select;
+        selectImage(popup_image_to_select, popup_zoom_canvas);
     }
 }
 
